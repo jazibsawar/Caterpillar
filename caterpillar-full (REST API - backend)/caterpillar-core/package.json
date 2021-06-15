@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "dev": "gulp",
     "start": "node ./out/www.js",
     "compile": "node ./node_modules/typescript/bin/tsc -p ./src",
     "antlr4ts": "antlr4ts -o ./src/models/dynamic_binding  -visitor ./src/models/dynamic_binding/binding_grammar.g4"
