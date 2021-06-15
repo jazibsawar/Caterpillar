@@ -2,10 +2,13 @@ import { ContractInfo } from "./../../adapters/ethereum-blockchain/structs/contr
 import { Request, Response } from "express";
 
 import * as deploymentService from "./../services/deployment-mediator";
-import * as runtimeRegistryService from "./../../runtime-registry/services/registry-service";
+import RegistryService from "./../../runtime-registry/services/registry-service";
 import * as runtimeOperations from "./../services/runtime-operations-mediator";
 import * as policyInfoCollector from "./../services/policy-info-collector";
 import { printl } from "../../adapters/messages/request-logs";
+import * as ethereumAdapter from "../../adapters/ethereum-blockchain/ethereum-adapter";
+
+const runtimeRegistryService = RegistryService(ethereumAdapter);
 
 let runtimeRegistry: ContractInfo;
 

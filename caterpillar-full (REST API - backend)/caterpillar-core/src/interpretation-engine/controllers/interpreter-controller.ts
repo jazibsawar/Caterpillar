@@ -8,8 +8,11 @@ import { Request, Response } from "express";
 import * as parsingService from "../services/process-analyser/bpmn-parser";
 import * as compilationService from "../services/process-analyser/bpmn-compiler";
 import * as deploymentService from "../services/process-setup-handler/deployment-mediator";
-import * as runtimeRegistryService from "./../../runtime-registry/services/registry-service";
+import RegistryService from "./../../runtime-registry/services/registry-service";
 import * as infoCollectorService from "./../services/worklist-handler/process-info-collector";
+import * as ethereumAdapter from "../../adapters/ethereum-blockchain/ethereum-adapter";
+
+const runtimeRegistryService = RegistryService(ethereumAdapter);
 
 let runtimeRegistry: ContractInfo;
 

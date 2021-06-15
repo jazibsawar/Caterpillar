@@ -4,7 +4,6 @@ import { ContractInfo } from "./../../adapters/ethereum-blockchain/structs/contr
 import * as policyParsingService from "./../services/binding-policy-parser";
 import * as deploymentService from "./../services/deployment-mediator";
 import * as policyInfoCollector from "./../services/policy-info-collector";
-import * as runtimeRegistryService from "./../../runtime-registry/services/registry-service";
 
 import { printl } from "../../adapters/messages/request-logs";
 

@@ -5,10 +5,13 @@ import { Request, Response } from "express";
 import { NewInstRequest } from "../utils/structs/async-requests";
 
 import * as executionService from "../services/execution-monitor";
-import * as runtimeRegistryService from "../../runtime-registry/services/registry-service";
+import RegistryService from "../../runtime-registry/services/registry-service";
 
 import * as eventMonitor from "../services/event-monitor";
 import { printl } from "../../adapters/messages/request-logs";
+import * as ethereumAdapter from "../../adapters/ethereum-blockchain/ethereum-adapter";
+
+const runtimeRegistryService = RegistryService(ethereumAdapter);
 
 let runtimeRegistry: ContractInfo;
 
