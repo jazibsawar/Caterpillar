@@ -10,7 +10,10 @@ import * as deploymentService from "../services/process-setup-handler/deployment
 import * as registrationService from "./../services/process-setup-handler/registration-mediator";
 import * as eventMonitor from "./../services/worklist-handler/event-monitor";
 import * as processInfoCollector from "./../services/worklist-handler/process-info-collector";
-import * as runtimeRegistryService from "./../../runtime-registry/services/registry-service";
+import RegistryService from "./../../runtime-registry/services/registry-service";
+import * as ethereumAdapter from "../../adapters/ethereum-blockchain/ethereum-adapter";
+
+const runtimeRegistryService = RegistryService(ethereumAdapter);
 
 let runtimeRegistry: ContractInfo;
 

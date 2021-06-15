@@ -5,7 +5,10 @@ import { Request, Response } from "express";
 
 import * as executionMediatorService from "./../services/worklist-handler/execution-mediator";
 import * as processInfoCollectorService from "./../services/worklist-handler/process-info-collector";
-import * as runtimeRegistryService from "./../../runtime-registry/services/registry-service";
+import RegistryService from "./../../runtime-registry/services/registry-service";
+import * as ethereumAdapter from "../../adapters/ethereum-blockchain/ethereum-adapter";
+
+const runtimeRegistryService = RegistryService(ethereumAdapter);
 
 let runtimeRegistry: ContractInfo;
 

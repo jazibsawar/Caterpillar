@@ -7,11 +7,14 @@ import { parseModel } from "../services/bpmn-parser";
 
 import * as compilationService from "../services/bpmn-compiler";
 import * as deploymentService from "../services/deployment-mediator";
-import * as registryService from "../../runtime-registry/services/registry-service";
-import * as runtimeRegistryService from "../../runtime-registry/services/registry-service";
+import RegistryService from "../../runtime-registry/services/registry-service";
 
 import { ContractInfo } from "../../adapters/ethereum-blockchain/structs/contract-info";
 import { printl } from "../../adapters/messages/request-logs";
+
+import * as ethereumAdapter from "../../adapters/ethereum-blockchain/ethereum-adapter";
+
+const runtimeRegistryService = RegistryService(ethereumAdapter);
 
 let runtimeRegistry: ContractInfo;
 
@@ -81,7 +84,7 @@ export let queryProcessModels = (request: Request, response: Response) => {
     .validateRegistry(request.get("registryAddress"), this.runtimeRegistry)
     .then((runtimeRegistry) => {
       this.runtimeRegistry = runtimeRegistry;
-      registryService
+      runtimeRegistryService
         .findAllRegisteredModels(this.runtimeRegistry)
         .then((models) => {
           response.status(200).send(JSON.stringify(models));
